@@ -55,12 +55,13 @@ class _HomePageState extends State<HomePage> {
   Widget _geraItemCompra(BuildContext context, int index) {
     final itemCompra = _listaCompras[index];
     return CheckboxListTile(
-      value: itemCompra.estacomprado,
+      value: (itemCompra.estacomprado == 1),
       title: Text(itemCompra.nomeproduto ?? ""),
       subtitle: Text(itemCompra.descricao ?? ""),
       onChanged: (isChecked) {
         setState(() {
-          itemCompra.estacomprado = isChecked!;
+          itemCompra.estacomprado = (isChecked ?? false) ? 1 : 0;
+          ;
         });
         _itemCompraDao.atualiza(itemCompra);
       },
