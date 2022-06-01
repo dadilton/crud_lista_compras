@@ -27,19 +27,26 @@ class _ItemCompraDialogState extends State<ItemCompraDialog> {
     super.initState();
 
     if (widget.itemCompra != null) {
+      //se o item de compra no widget não estiver nulo, converte ele para Map
+      //se estiver nulo, recebe um Map vazio
       Map<String, dynamic> map =
           widget.itemCompra?.toMap() ?? Map<String, dynamic>();
 
       _itemAtual = ItemCompra.fromMap(map);
     }
-
+    //o controller do nome do produto vai receber o nome do produto, se ele não for nulo
+    //caso contrário. recebe uma string vazia
     _nomeProdutoController.text = _itemAtual.nomeproduto ?? "";
+    //o controller da descricao vai receber a descrição da compra, se não for nulo
+    //caso seja, recebe uma string vazia
     _descricaoController.text = _itemAtual.descricao ?? "";
   }
 
   @override
   void dispose() {
+    //esse método dispose é o que vai ser executado, caso o dialog seja destruído
     super.dispose();
+    //limpa os controllers em caso de destruído o dialog
     _nomeProdutoController.clear();
     _descricaoController.clear();
   }
