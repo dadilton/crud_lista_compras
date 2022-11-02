@@ -41,8 +41,9 @@ class _HomePageState extends State<HomePage> {
   Widget _geraListaCompra() {
     if (_listaCompras.isEmpty) {
       return Center(
-        child:
-            _loading ? CircularProgressIndicator() : Text("Tudo limpo, aqui!"),
+        child: _loading
+            ? CircularProgressIndicator()
+            : Text("Sem itens para compra. Tudo limpo, aqui!"),
       );
     } else {
       return ListView.builder(

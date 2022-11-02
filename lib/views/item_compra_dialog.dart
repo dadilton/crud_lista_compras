@@ -22,6 +22,8 @@ class _ItemCompraDialogState extends State<ItemCompraDialog> {
   final _descricaoController = TextEditingController();
   ItemCompra _itemAtual = ItemCompra();
 
+  //initState é executado quando o Widget é inserido na sua aplicação
+  //em tempo de execução
   @override
   void initState() {
     super.initState();
@@ -71,7 +73,8 @@ class _ItemCompraDialogState extends State<ItemCompraDialog> {
         ],
       ),
       actions: <Widget>[
-        FlatButton(
+        //FlatButton(
+        TextButton(
           child: Text("Salvar"),
           onPressed: () {
             _itemAtual.nomeproduto = _nomeProdutoController.value.text;

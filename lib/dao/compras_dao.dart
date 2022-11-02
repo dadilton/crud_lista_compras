@@ -3,12 +3,21 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ItemCompraDao {
-  static final ItemCompraDao _instancia = ItemCompraDao.internal();
+  //a variável abaixo foi criada para criar apenas uma instância
+  //desta classe.
+  static final ItemCompraDao _instancia = ItemCompraDao._internal();
 
-  factory ItemCompraDao() => _instancia;
+  //método criado com a palavra chave "factory"
+  //serve para criar um construtor de classe que nem sempre
+  //retorna uma nova instância de objeto da classe
+  factory ItemCompraDao() {
+    return _instancia;
+  }
 
-  ItemCompraDao.internal();
+  ItemCompraDao._internal();
 
+  //variável que contém um objeto do tipo Database, que é usado para
+  //usar uma base de dados SQLite
   Database? _db;
 
   Future<Database> get db async {
